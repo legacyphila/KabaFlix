@@ -1,0 +1,6 @@
+{
+  "name": "KabaFlix by Legacy Phila",
+  "description": "Smart subscription manager for managing Netflix account resales and other subscriptions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

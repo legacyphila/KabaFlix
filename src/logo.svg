@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Shadow for 3D depth -->
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#000000" flood-opacity="0.3" />
+      <feDropShadow dx="3" dy="5" stdDeviation="6" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+
+    <!-- Bevel & Edge Glow Filter -->
+    <filter id="bevel" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feSpecularLighting in="blur" surfaceScale="5" specularConstant="1.2" specularExponent="20" lighting-color="#ffffff" result="spec">
+        <fePointLight x="250" y="100" z="300" />
+      </feSpecularLighting>
+      <feComposite in2="SourceGraphic" in="spec" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit" />
+      <feComposite in2="SourceGraphic" in="lit" operator="in" />
+    </filter>
+
+    <!-- Metallic Red Primary Gradient -->
+    <radialGradient id="redGradient" cx="45%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FF1E27" />
+      <stop offset="45%" stop-color="#E50914" />
+      <stop offset="85%" stop-color="#B6060F" />
+      <stop offset="100%" stop-color="#7C0207" />
+    </radialGradient>
+
+    <!-- 3D Extrusion Shadow Gradient -->
+    <linearGradient id="3dShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4E0104" />
+      <stop offset="100%" stop-color="#240001" />
+    </linearGradient>
+
+    <!-- Play Button Yellow-Orange Accent Gradient -->
+    <linearGradient id="yellowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF512F" />
+      <stop offset="100%" stop-color="#DD2476" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(140, 75)" filter="url(#shadow)">
+    <!-- 3D EXTRUDED EDGE (Dark Burgundy Background Block) -->
+    <!-- Scaled slightly downwards/right for extrusion depth -->
+    <g transform="translate(4, 10)" fill="url(#3dShadow)">
+      <!-- Master shape of KF -->
+      <path d="M 0 0 L 105 0 L 105 155 L 202 50 L 298 50 L 200 155 L 305 270 L 200 270 L 105 168 L 105 270 L 0 270 Z" />
+      <path d="M 233 46 L 413 46 L 413 110 L 311 110 L 311 150 L 390 150 L 360 215 L 311 175 L 311 270 L 233 270 Z" />
+    </g>
+
+    <!-- SHARP DIAGONAL BEVEL OVERLAYS & CUTS -->
+    <g fill="url(#redGradient)">
+      <!-- THE LETTER 'K' -->
+      <path d="M 0 0 H 105 V 140 L 202 36 H 298 L 195 145 H 202 L 310 270 H 195 L 105 165 V 270 H 0 Z" />
+      
+      <!-- THE LETTER 'F' (Adjacent, sharing aesthetic angles) -->
+      <!-- Top Bar of F, Mid Bar of F with geometric cut, Stem of F -->
+      <!-- Upper part of F starting offset -->
+      <path d="M 233 36 H 425 V 105 H 311 V 135 H 395 C 400 135 401 142 391 160 L 372 195 C 367 205 358 205 348 195 L 311 165 V 270 H 233 Z" />
+    </g>
+
+    <!-- EMBEDDED PLAY BUTTON (Triangle caret inside active horizontal bar of 'F') -->
+    <!-- Positioning exactly inline with the F structure -->
+    <path d="M 335 125 L 372 147.5 L 335 170 Z" fill="#FFFFFF" opacity="0.95" />
+    <path d="M 335 125 L 372 147.5 L 335 170 Z" fill="url(#yellowGrad)" opacity="0.4" style="mix-blend-mode: screen;" />
+  </g>
+</svg>
